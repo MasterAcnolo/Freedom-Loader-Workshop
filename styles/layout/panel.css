@@ -63,7 +63,6 @@
   user-select: none;
   transition: background 0.1s ease;
 }
-.section-header:hover { background: var(--bg-tertiary); }
 
 .section-header-left {
   display: flex;

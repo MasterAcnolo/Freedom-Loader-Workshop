@@ -1,0 +1,92 @@
+[
+  {
+    "id": "dark",
+    "name": "Dark",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-07-02",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/dark.png",
+    "file": "./themes/Dark.zip",
+    "description": "A sleek dark theme with comfortable contrast for extended coding sessions"
+  },
+  {
+    "id": "light",
+    "name": "Light",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-07-02",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/light.png",
+    "file": "./themes/Light.zip",
+    "description": "A bright and clean light theme perfect for daytime development"
+  },
+  {
+    "id": "neon",
+    "name": "Neon",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-11-09",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/neon.png",
+    "file": "./themes/Neon.zip",
+    "description": "Vibrant neon colors with high contrast for a modern cyberpunk aesthetic"
+  },
+  {
+    "id": "drift",
+    "name": "Drift",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-11-08",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/drift.png",
+    "file": "./themes/Drift.zip",
+    "description": "Smooth gradients and cool tones creating a flowing visual experience"
+  },
+  {
+    "id": "fnatic",
+    "name": "Fnatic",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-07-02",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/fnatic.png",
+    "file": "./themes/Fnatic.zip",
+    "description": "Gaming-inspired theme with aggressive colors and bold typography"
+  },
+  {
+    "id": "spicyfire",
+    "name": "SpicyFire",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-07-02",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/spicyfire.png",
+    "file": "./themes/SpicyFire.zip",
+    "description": "Fiery reds and oranges with intense highlights for maximum visibility"
+  },
+  {
+    "id": "songbird",
+    "name": "Songbird",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-11-17",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/songbird.png",
+    "file": "./themes/Songbird.zip",
+    "description": "Warm and inviting theme inspired by songbird from Cyberpunk"
+  },
+  {
+    "id": "nf",
+    "name": "NF",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-08-29",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/nf.png",
+    "file": "./themes/NF.zip",
+    "description": "Minimalist theme with sharp edges and professional aesthetics"
+  },
+  {
+    "id": "chirac",
+    "name": "Chirac",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2026-07-02",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/image.png",
+    "file": "./themes/Chirac.zip",
+    "description": "Elegant theme with sophisticated color palette and refined design"
+  }
+]

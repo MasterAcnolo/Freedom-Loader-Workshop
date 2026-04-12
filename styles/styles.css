@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 @import url('variables.css');
+@import url('animations.css');
+@import url('footer.css');
 @import url('layout/topbar.css');
 @import url('layout/workspace.css');
 @import url('layout/settingsPanel.css');
@@ -22,6 +24,47 @@ body {
   transition: opacity 0.4s ease;
 }
 body.ready { opacity: 1; }
+
+body.loading {
+  overflow: hidden;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(8, 8, 8);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease;
+}
+
+.loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #444;
+  border-top: 6px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.loader-text {
+  color: #ccc;
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeInText 1.5s ease-in-out infinite alternate;
+}
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }

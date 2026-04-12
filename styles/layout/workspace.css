@@ -1,7 +1,6 @@
 .workspace {
   display: flex;
   height: 100vh;
-  padding-top: var(--topbar-height);
 }
 
 .preview-pane {
