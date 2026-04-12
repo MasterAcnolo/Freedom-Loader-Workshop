@@ -36,6 +36,8 @@ const VAR_MAP = {
   "style.settings.background.section":  "--fl-settings-section-bg-color",
   "style.settings.openThemeButton.background": "--fl-open-theme-btn-bg",
   "style.settings.openThemeButton.text":       "--fl-open-theme-btn-text",
+  "style.settings.openJsonButton.background": "--fl-open-json-btn-bg",
+  "style.settings.openJsonButton.text":       "--fl-open-json-btn-text",
   "style.settings.text":                "--fl-settings-text-color",
   "style.settings.subtitle":            "--fl-settings-subtitle-color",
 };

@@ -159,6 +159,11 @@ function buildColorsPanel() {
         ${colorField("Background", "style.settings.openThemeButton.background")}
         ${colorField("Text", "style.settings.openThemeButton.text")}
       </div>
+      <div class="subsection-label">Open JSON Button</div>
+      <div class="fields-grid">
+        ${colorField("Background", "style.settings.openJsonButton.background")}
+        ${colorField("Text", "style.settings.openJsonButton.text")}
+      </div>
     `)}
   `;
 }
