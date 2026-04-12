@@ -30,6 +30,14 @@ const VAR_MAP = {
   "style.videoInfo.link":               "--fl-video-info-link-color",
   "style.videoInfo.linkHover":          "--fl-video-info-link-hover-color",
   "style.playlist.background":          "--fl-playlist-background-color",
+  "style.settings.button.background":   "--fl-settings-button-bg-color",
+  "style.settings.button.text":         "--fl-settings-button-text-color",
+  "style.settings.background.modal":    "--fl-settings-modal-bg-color",
+  "style.settings.background.section":  "--fl-settings-section-bg-color",
+  "style.settings.openThemeButton.background": "--fl-open-theme-btn-bg",
+  "style.settings.openThemeButton.text":       "--fl-open-theme-btn-text",
+  "style.settings.text":                "--fl-settings-text-color",
+  "style.settings.subtitle":            "--fl-settings-subtitle-color",
 };
 
 function getNestedValue(obj, path) {

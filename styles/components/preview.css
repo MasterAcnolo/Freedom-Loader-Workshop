@@ -171,13 +171,53 @@
   cursor: pointer;
 }
 
-.fl-checkmark {
-  width: 25px;
-  height: 25px;
-  border-radius: 6px;
-  background: var(--fl-checkbox-unchecked-bg-color, #555);
+.fl-checkbox-mp3 {
+  display: block;
   position: relative;
-  flex-shrink: 0;
+  cursor: pointer;
+  font-size: 1.3rem;
+  user-select: none;
+}
+.fl-checkbox-mp3 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.fl-checkmark {
+  --clr: var(--fl-checkbox-checked-bg-color, #2196f3);
+  position: relative;
+  height: 1.3em;
+  width: 1.3em;
+  background-color: var(--fl-checkbox-unchecked-bg-color, #555);
+  border-radius: 0.5rem;
+  transition: background-color 300ms;
+}
+.fl-checkbox-mp3 input:checked ~ .fl-checkmark {
+  background-color: var(--clr);
+  animation: fl-pulse 500ms ease-in-out;
+}
+.fl-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 0.35em;
+  height: 0.6em;
+  border: solid var(--fl-checkbox-checkmark-border-color, #fff);
+  border-width: 0 0.15em 0.15em 0;
+}
+
+.fl-checkbox-mp3 input:checked ~ .fl-checkmark:after { display: block; }
+
+@keyframes fl-pulse {
+  0%   { box-shadow: 0 0 0 var(--fl-checkbox-pulse-color, rgba(33,150,243,0.5)); rotate: 20deg; }
+  50%  { rotate: -20deg; }
+  75%  { box-shadow: 0 0 0 10px var(--fl-checkbox-pulse-color, rgba(33,150,243,0.5)); }
+  100% { box-shadow: 0 0 0 13px var(--fl-checkbox-pulse-color, rgba(33,150,243,0.5)); rotate: 0; }
 }
 
 .fl-download-btn {
@@ -239,7 +279,8 @@
 }
 
 .fl-progress-texts {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   gap: 20px;
   font-size: 0.75em;
   color: var(--fl-default-text-color, #e0e0e0);
@@ -311,3 +352,161 @@
   color: rgba(176,176,176,0.5);
   pointer-events: none;
 }
+
+/* Settings button */
+.fl-settings-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 60px;
+  right: 12px;
+  opacity: 0.8;
+  background-color: var(--fl-settings-button-bg-color, #1e1e1e);
+  border-radius: 14px;
+  padding: 6px;
+  border: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  cursor: pointer;
+  z-index: 100;
+}
+.fl-settings-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Settings panel */
+.fl-settings-panel {
+  position: absolute;
+  top: 60px;
+  right: 12px;
+  width: 260px;
+  max-height: 70%;
+  background: var(--fl-settings-modal-bg-color, #1e1e1e);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  overflow-y: auto;
+  z-index: 9999;
+  color: var(--fl-settings-text-color, #e0e0e0);
+  scrollbar-width: none;
+}
+.fl-settings-panel::-webkit-scrollbar { display: none; }
+
+.fl-settings-modal { width: 100%; position: relative; }
+
+.fl-close-btn {
+  position: absolute;
+  top: 0; right: 0;
+  background: none;
+  border: none;
+  color: var(--fl-settings-text-color, #e0e0e0);
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.fl-close-btn:hover { opacity: 1; }
+
+.fl-settings-title { margin-bottom: 14px; }
+.fl-settings-title h2 { margin: 0; font-size: 18px; color: var(--fl-settings-text-color, #e0e0e0); }
+.fl-settings-title p { font-size: 11px; color: var(--fl-settings-subtitle-color, #aaa); margin-top: 4px; }
+
+.fl-settings-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  background: var(--fl-settings-section-bg-color, #2a2a2a);
+  border-radius: 10px;
+  gap: 4px;
+}
+.fl-settings-section h3 { margin: 0 0 8px 0; font-size: 14px; color: var(--fl-settings-text-color, #e0e0e0); }
+.fl-settings-section details { background: none; padding: 0; margin: 0; }
+.fl-settings-section details summary { font-size: 13px; font-weight: 600; color: var(--fl-settings-text-color, #e0e0e0); }
+
+.fl-setting-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 6px 0;
+}
+.fl-setting-info { display: flex; flex-direction: column; }
+.fl-setting-title { font-size: 12px; font-weight: 500; color: var(--fl-settings-text-color, #e0e0e0); }
+
+.fl-setting-select {
+  margin-top: 4px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background: #fff;
+  color: #000;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.fl-settings-footer {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.fl-footer-btn {
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 11px;
+  background: var(--fl-form-button-bg-color, #2196f3);
+  color: var(--fl-form-button-text-color, #fff);
+  font-family: 'Poppins', sans-serif;
+}
+
+.fl-footer-btn-theme {
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 11px;
+  background: var(--fl-open-theme-btn-bg, #2196f3);
+  color: var(--fl-open-theme-btn-text, #fff);
+  font-family: 'Poppins', sans-serif;
+  transition: opacity 0.15s ease;
+}
+
+.fl-footer-btn-theme:hover { opacity: 0.85; }
+
+/* Download stage */
+.fl-download-stage {
+  font-size: 0.8rem;
+  color: var(--fl-default-text-color, #e0e0e0);
+  margin-bottom: 4px;
+}
+
+/* Playlist info + stop button */
+.fl-playlist-info {
+  font-size: 0.8em;
+  color: var(--fl-default-text-color, #e0e0e0);
+  opacity: 0.8;
+}
+
+.fl-stop-btn {
+  background: var(--fl-form-button-bg-color, #2196f3);
+  border: none;
+  color: var(--fl-form-button-text-color, #fff);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.15s ease;
+}
+.fl-stop-btn:hover { background: var(--fl-form-button-bg-hover-color, #1976d2); }
+
+
+.fl-paste-btn:hover { background: var(--fl-form-button-bg-hover-color, #1976d2); }
+.fl-download-btn:hover { background: var(--fl-form-button-bg-hover-color, #1976d2); }
+.fl-footer-btn:hover { opacity: 0.85; }
+.fl-topbar-btn:hover { background: rgba(255,255,255,0.12); }
+.fl-wc-btn:hover { background: rgba(255,255,255,0.1); }

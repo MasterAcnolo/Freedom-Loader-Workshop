@@ -7,6 +7,8 @@
   <meta name="description" content="Create and export custom themes for Freedom Loader">
   <link rel="stylesheet" href="styles/styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 </head>
 <body>
 
@@ -81,6 +83,73 @@
                 </div>
               </div>
 
+              <!-- Settings button -->
+              <button class="fl-settings-btn" id="fl-settings-btn" onclick="document.getElementById('fl-settings-panel').style.display='block'">
+                <svg width="800px" height="800px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M262.29,192.31a64,64,0,1,0,57.4,57.4A64.13,64.13,0,0,0,262.29,192.31ZM416.39,256a154.34,154.34,0,0,1-1.53,20.79l45.21,35.46A10.81,10.81,0,0,1,462.52,326l-42.77,74a10.81,10.81,0,0,1-13.14,4.59l-44.9-18.08a16.11,16.11,0,0,0-15.17,1.75A164.48,164.48,0,0,1,325,400.8a15.94,15.94,0,0,0-8.82,12.14l-6.73,47.89A11.08,11.08,0,0,1,298.77,470H213.23a11.11,11.11,0,0,1-10.69-8.87l-6.72-47.82a16.07,16.07,0,0,0-9-12.22,155.3,155.3,0,0,1-21.46-12.57,16,16,0,0,0-15.11-1.71l-44.89,18.07a10.81,10.81,0,0,1-13.14-4.58l-42.77-74a10.8,10.8,0,0,1,2.45-13.75l38.21-30a16.05,16.05,0,0,0,6-14.08c-.36-4.17-.58-8.33-.58-12.5s.21-8.27.58-12.35a16,16,0,0,0-6.07-13.94l-38.19-30A10.81,10.81,0,0,1,49.48,186l42.77-74a10.81,10.81,0,0,1,13.14-4.59l44.9,18.08a16.11,16.11,0,0,0,15.17-1.75A164.48,164.48,0,0,1,187,111.2a15.94,15.94,0,0,0,8.82-12.14l6.73-47.89A11.08,11.08,0,0,1,213.23,42h85.54a11.11,11.11,0,0,1,10.69,8.87l6.72,47.82a16.07,16.07,0,0,0,9,12.22,155.3,155.3,0,0,1,21.46,12.57,16,16,0,0,0,15.11,1.71l44.89-18.07a10.81,10.81,0,0,1,13.14,4.58l42.77,74a10.8,10.8,0,0,1-2.45,13.75l-38.21,30a16.05,16.05,0,0,0-6.05,14.08C416.17,247.67,416.39,251.83,416.39,256Z" style="fill:none;stroke:var(--fl-settings-button-text-color);stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>
+              </button>
+
+              <!-- Settings panel -->
+              <div class="fl-settings-panel" id="fl-settings-panel" style="display:none">
+                <div class="fl-settings-modal">
+                  <button class="fl-close-btn" onclick="document.getElementById('fl-settings-panel').style.display='none'">✕</button>
+                  <div class="fl-settings-title"><h2>SETTINGS</h2><p style="font-size:0.8em;">Changes are saved automatically.</p></div>
+                  <div class="fl-settings-section">
+                    <h3>Basic Settings</h3>
+                    <div class="fl-setting-item" style="margin-left:32px">
+                      <div class="fl-setting-info">
+                        <div style="display:flex;align-items:center;gap:10px">
+                          <span class="fl-setting-title">Theme</span>
+                          <select class="fl-setting-select"><option>Dark</option><option>Light</option><option>NF</option></select>
+                        </div>
+                        <small style="font-size:12px;color:var(--fl-settings-subtitle-color)">Choose the theme</small>
+                      </div>
+                    </div>
+                    <div class="fl-setting-item">
+                      <input type="checkbox" style="width:18px;height:18px;flex-shrink:0">
+                      <div class="fl-setting-info">
+                        <span class="fl-setting-title">Discord RPC</span>
+                        <small style="font-size:12px;color:var(--fl-settings-subtitle-color)">Enable Discord Rich Presence.</small>
+                      </div>
+                    </div>
+                    <div class="fl-setting-item">
+                      <input type="checkbox" checked style="width:18px;height:18px;flex-shrink:0">
+                      <div class="fl-setting-info">
+                        <span class="fl-setting-title">Auto Fetch Info</span>
+                        <small style="font-size:12px;color:var(--fl-settings-subtitle-color)">Automatically fetch information.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <details class="fl-settings-section">
+                    <summary style="cursor:pointer;font-size:14px;font-weight:600">Advanced Settings</summary>
+                    <div class="fl-setting-item" style="margin-top:8px">
+                      <input type="checkbox" checked style="width:18px;height:18px;flex-shrink:0">
+                      <div class="fl-setting-info">
+                        <span class="fl-setting-title">Auto Update</span>
+                        <small style="font-size:12px;color:var(--fl-settings-subtitle-color)">Enable automatic updates.</small>
+                      </div>
+                    </div>
+                    <div class="fl-setting-item">
+                      <input type="checkbox" checked style="width:18px;height:18px;flex-shrink:0">
+                      <div class="fl-setting-info">
+                        <span class="fl-setting-title">Add Metadata</span>
+                        <small style="font-size:12px;color:var(--fl-settings-subtitle-color)">Include metadata in files.</small>
+                      </div>
+                    </div>
+                    <div class="fl-setting-item" style="margin-left:32px;margin-top:8px">
+                      <div class="fl-setting-info">
+                        <span class="fl-setting-title">Custom Codec</span>
+                        <select class="fl-setting-select"><option>H264</option><option>AV1</option><option>VP9</option></select>
+                        <small style="font-size:12px;color:var(--fl-settings-subtitle-color)">Choose video codec.</small>
+                      </div>
+                    </div>
+                  </details>
+                  <div class="fl-settings-footer">
+                    <button class="fl-footer-btn-theme">Open Theme Folder</button>
+                    <button class="fl-footer-btn">Open JSON Configuration</button>
+                  </div>
+                </div>
+              </div>
+
               <!-- Main content -->
               <div class="fl-main">
                 <div class="fl-container">
@@ -98,7 +167,10 @@
                     </div>
 
                     <label class="fl-checkbox-label">
-                      <div class="fl-checkmark"></div>
+                      <label class="fl-checkbox-mp3">
+                        <input type="checkbox">
+                        <div class="fl-checkmark"></div>
+                      </label>
                       Audio Only (MP3)
                     </label>
 
@@ -116,12 +188,15 @@
                   </div>
 
                   <div class="fl-progress-container">
+                    <div class="fl-download-stage">Retrieving data...</div>
                     <div class="fl-progress-wrapper">
                       <div class="fl-progress-bar"></div>
                     </div>
                     <div class="fl-progress-texts">
                       <span>65%</span>
                       <span>2.4 MB/s</span>
+                      <span class="fl-playlist-info">3/12</span>
+                      <button class="fl-stop-btn" title="Stop">■</button>
                     </div>
                   </div>
 
@@ -129,7 +204,7 @@
 
                   <div class="fl-video-info">
                     <h3>Why Some Projects Use Multiple Programming Languages</h3>
-                    <div style="display: flex; justify-content: center; align-items: center;">
+                    <div style="display:flex;justify-content:center;align-items:center">
                       <img src="https://i.ytimg.com/vi/XJC5WB2Bwrc/maxresdefault.jpg" alt="Thumbnail">
                     </div>
                     <ul>

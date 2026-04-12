@@ -2,6 +2,7 @@
 @import url('variables.css');
 @import url('layout/topbar.css');
 @import url('layout/workspace.css');
+@import url('layout/settingsPanel.css');
 @import url('layout/panel.css');
 @import url('components/inputs.css');
 @import url('components/preview.css');
@@ -37,4 +38,10 @@ button {
 
 input, select, textarea {
   font-family: var(--font-body);
+}
+
+.pcr-app {
+  font-family: var(--font-body) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg) !important;
 }

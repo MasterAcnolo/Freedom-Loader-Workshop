@@ -62,6 +62,7 @@ const DEFAULT_THEME = {
     settings: {
       button: { background: "#1e1e1e", text: "#e0e0e0" },
       background: { modal: "#1e1e1e", section: "#2a2a2a" },
+      openThemeButton: { background: "#2196f3", text: "#ffffff" },
       text: "#e0e0e0",
       subtitle: "#aaaaaa"
     }

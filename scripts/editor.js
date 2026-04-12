@@ -13,10 +13,7 @@ function colorField(label, path, subLabel) {
     <div class="field">
       <span class="field-label">${label}${subLabel ? `<br><span class="field-label-sub">${subLabel}</span>` : ""}</span>
       <div class="color-field">
-        <label class="color-swatch-btn" title="Pick color">
-          <input type="color" id="${id}-picker" value="${val}" data-path="${path}">
-          <div class="color-swatch-preview" id="${id}-preview" style="background:${val}"></div>
-        </label>
+        <div class="pickr-trigger" id="${id}-pickr" data-path="${path}" data-value="${val}"></div>
         <input type="text" class="color-hex-input" id="${id}-hex" value="${val}" data-path="${path}" maxlength="25" placeholder="#000000">
       </div>
     </div>`;
@@ -157,37 +154,79 @@ function buildColorsPanel() {
         ${colorField("Text", "style.settings.text")}
         ${colorField("Subtitle", "style.settings.subtitle")}
       </div>
+      <div class="subsection-label">Open Theme Button</div>
+      <div class="fields-grid">
+        ${colorField("Background", "style.settings.openThemeButton.background")}
+        ${colorField("Text", "style.settings.openThemeButton.text")}
+      </div>
     `)}
   `;
 }
 
+function initPickrs(container) {
+  container.querySelectorAll(".pickr-trigger[data-path]").forEach(trigger => {
+    const path = trigger.dataset.path;
+    const val = trigger.dataset.value || "#000000";
+
+    const pickr = Pickr.create({
+      el: trigger,
+      theme: "nano",
+      default: val,
+      components: {
+        preview: true,
+        opacity: true,
+        hue: true,
+        interaction: {
+          hex: true,
+          rgba: true,
+          input: true,
+          save: true,
+        }
+      }
+    });
+
+    pickr.on("save", (color) => {
+      if (!color) return;
+      const hexa = color.toHEXA().toString();
+      const rgba = color.toRGBA().toString(0);
+      const hasAlpha = color.toRGBA()[3] < 1;
+      const finalVal = hasAlpha ? rgba : hexa;
+
+      const hexInput = document.getElementById(`cf-${path.replace(/\./g, "-")}-hex`);
+      if (hexInput) hexInput.value = finalVal;
+
+      update(path, finalVal);
+      pickr.hide();
+    });
+
+    pickr.on("change", (color) => {
+      if (!color) return;
+      const hexa = color.toHEXA().toString();
+      const rgba = color.toRGBA().toString(0);
+      const hasAlpha = color.toRGBA()[3] < 1;
+      const finalVal = hasAlpha ? rgba : hexa;
+
+      const hexInput = document.getElementById(`cf-${path.replace(/\./g, "-")}-hex`);
+      if (hexInput) hexInput.value = finalVal;
+
+      update(path, finalVal);
+    });
+  });
+}
+
 function wireInputs(container) {
   container.querySelectorAll("input[data-path], select[data-path], textarea[data-path]").forEach(el => {
-    if (el.type === "color") {
-      el.addEventListener("input", () => {
-        const path = el.dataset.path;
-        const hex = el.value;
-        const preview = document.getElementById(`cf-${path.replace(/\./g, "-")}-preview`);
-        const hexInput = document.getElementById(`cf-${path.replace(/\./g, "-")}-hex`);
-        if (preview) preview.style.background = hex;
-        if (hexInput) hexInput.value = hex;
-        update(path, hex);
-      });
-    } else if (el.classList.contains("color-hex-input")) {
-      el.addEventListener("input", () => {
-        const path = el.dataset.path;
-        const val = el.value.trim();
-        const preview = document.getElementById(`cf-${path.replace(/\./g, "-")}-preview`);
-        const picker = document.getElementById(`cf-${path.replace(/\./g, "-")}-picker`);
-        if (/^#[0-9a-fA-F]{3,8}$/.test(val) || /^rgba?\(/.test(val)) {
-          if (preview) preview.style.background = val;
-          if (picker && /^#[0-9a-fA-F]{6}$/.test(val)) picker.value = val;
-          update(path, val);
-        }
-      });
-    } else if (el.type !== "file") {
-      el.addEventListener("input", () => update(el.dataset.path, el.value));
-    }
+    if (el.classList.contains("color-hex-input")) {
+        el.addEventListener("input", () => {
+          const path = el.dataset.path;
+          const val = el.value.trim();
+          if (/^#[0-9a-fA-F]{3,8}$/.test(val) || /^rgba?\(/.test(val)) {
+            update(path, val);
+          }
+        });
+      } else if (el.type !== "file") {
+        el.addEventListener("input", () => update(el.dataset.path, el.value));
+      }
   });
 }
 
@@ -257,6 +296,8 @@ function initEditor() {
 
   wireInputs(document.getElementById("tab-meta"));
   wireInputs(document.getElementById("tab-colors"));
+    initPickrs(document.getElementById("tab-meta"));
+  initPickrs(document.getElementById("tab-colors")); 
   wireImageUpload();
   wireSections();
   wireTabs();

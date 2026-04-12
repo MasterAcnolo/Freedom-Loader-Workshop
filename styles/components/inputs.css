@@ -58,38 +58,12 @@
   gap: 8px;
 }
 
-.color-swatch-btn {
-  position: relative;
+.pickr-trigger .pickr .pcr-button {
   width: 32px;
   height: 32px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  overflow: hidden;
-  flex-shrink: 0;
   cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-.color-swatch-btn:hover {
-  transform: scale(1.05);
-  box-shadow: var(--shadow-sm);
-}
-
-.color-swatch-btn input[type="color"] {
-  position: absolute;
-  inset: -4px;
-  width: calc(100% + 8px);
-  height: calc(100% + 8px);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  opacity: 0;
-}
-
-.color-swatch-preview {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: var(--radius-sm);
 }
 
 .color-hex-input {
