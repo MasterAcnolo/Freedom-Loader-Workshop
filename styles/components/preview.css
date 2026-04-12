@@ -1,0 +1,313 @@
+.preview-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Freedom Loader preview styles — scoped inside .preview-inner */
+.preview-inner * { box-sizing: border-box; }
+
+.preview-inner body,
+.fl-preview {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  background-color: var(--fl-background-color, #121212);
+  color: var(--fl-default-text-color, #e0e0e0);
+  width: 750px;
+  height: 800px;
+  overflow: hidden;
+  position: relative;
+  background-size: var(--fl-bg-size, cover);
+  background-position: var(--fl-bg-position, center);
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+}
+
+.fl-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 48px;
+  background: #1f1f1f98;
+  color: #eaeaea;
+  padding: 0 12px;
+  flex-shrink: 0;
+}
+
+.fl-topbar-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.fl-topbar-btn {
+  height: 32px;
+  padding: 0 14px;
+  font-size: 13px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: #eaeaea;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.fl-topbar-wc {
+  display: flex;
+  gap: 0;
+}
+
+.fl-wc-btn {
+  width: 46px;
+  height: 48px;
+  background: transparent;
+  border: none;
+  color: #eaeaea;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fl-main {
+  width: 100%;
+  height: calc(700px - 48px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  scrollbar-width: none;
+}
+.fl-main::-webkit-scrollbar { display: none; }
+
+.fl-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 650px;
+}
+
+.fl-title {
+  color: var(--fl-default-text-color, #e0e0e0);
+  font-size: 2em;
+  margin-bottom: 0.2em;
+  font-weight: bold;
+}
+
+.fl-subtitle {
+  color: var(--fl-subtitle-color, #2196f3);
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.fl-form {
+  background-color: var(--fl-form-bg-color, #1e1e1e);
+  padding: 1.5em;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.fl-url-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.fl-input {
+  flex: 1;
+  padding: 0.6em 1em;
+  border: 1px solid var(--fl-form-input-border-color, #444);
+  border-radius: 8px;
+  background: var(--fl-form-input-bg-color, #2a2a2a);
+  color: var(--fl-form-input-text-color, #f5f5f5);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9em;
+}
+.fl-input::placeholder { color: var(--fl-form-input-placeholder-color, #888); }
+
+.fl-paste-btn {
+  background: var(--fl-form-button-bg-color, #2196f3);
+  border: none;
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--fl-paste-button-icon-color, #fff);
+  flex-shrink: 0;
+}
+
+.fl-select {
+  flex: 1;
+  padding: 0.6em 0.8em;
+  border: 1px solid var(--fl-form-input-border-color, #444);
+  border-radius: 8px;
+  background: var(--fl-form-input-bg-color, #2a2a2a);
+  color: var(--fl-form-input-text-color, #f5f5f5);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85em;
+}
+
+.fl-checkbox-label {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.85em;
+  color: var(--fl-audio-only-label-color, #f5f5f5);
+  cursor: pointer;
+}
+
+.fl-checkmark {
+  width: 25px;
+  height: 25px;
+  border-radius: 6px;
+  background: var(--fl-checkbox-unchecked-bg-color, #555);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.fl-download-btn {
+  background: var(--fl-form-button-bg-color, #2196f3);
+  color: var(--fl-form-button-text-color, #fff);
+  border: none;
+  padding: 0.7em;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75em;
+  font-weight: 600;
+  width: 100%;
+}
+
+.fl-save-path {
+  margin-top: 1em;
+  font-size: 1rem;         
+  font-weight: 600;    
+  color: var(--fl-default-text-color, #e0e0e0);
+  text-align: center;
+}
+
+.fl-save-path span {
+  font-size: 0.85em;
+  font-weight: 600;
+  background: rgba(0,0,0,0.2);
+  color: var(--fl-form-input-text-color, #f5f5f5);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  font-family: monospace;
+  border: 1px dashed var(--fl-form-input-border-color, #444);
+}
+
+.fl-progress-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  margin-top: 12px;
+}
+
+.fl-progress-wrapper {
+  width: 100%;
+  max-width: 400px;
+  height: 10px;
+  background: var(--fl-progress-bar-bg-color, #444);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fl-progress-bar {
+  height: 100%;
+  width: 65%;
+  background: var(--fl-progress-bar-fill-color, #2196f3);
+  border-radius: 10px;
+}
+
+.fl-progress-texts {
+  display: flex;
+  gap: 20px;
+  font-size: 0.75em;
+  color: var(--fl-default-text-color, #e0e0e0);
+}
+
+.fl-download-status {
+  margin-top: 1em;
+  font-weight: bold;
+  text-align: center;
+  color: var(--fl-download-status-color, #2196f3);
+  font-size: 0.85em;
+}
+
+.fl-video-info {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  padding: 1.2em 1.5em;
+  background: var(--fl-video-info-bg-color, #1a1a1a);
+  border-radius: 12px;
+  color: var(--fl-video-info-text-color, #e0e0e0);
+  font-size: 1rem;
+}
+
+.fl-video-info h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.6em;
+  color: var(--fl-video-info-heading-color, #2196f3);
+  font-weight: 700;
+}
+
+.fl-video-info img {
+  max-width: 100%;
+  width: 320px;
+  border-radius: 8px;
+  margin-bottom: 0.8em;
+  display: block;
+}
+
+.fl-video-info ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fl-video-info ul li {
+  color: var(--fl-video-info-list-color, #ccc);
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.fl-video-info ul li strong {
+  color: var(--fl-video-info-list-strong-color, #fff);
+}
+
+.fl-video-info ul li a {
+  color: var(--fl-video-info-link-color, #2196f3);
+  text-decoration: none;
+}
+
+.fl-version {
+  position: absolute;
+  right: 18px;
+  bottom: 10px;
+  font-size: 0.75em;
+  color: rgba(176,176,176,0.5);
+  pointer-events: none;
+}
