@@ -1,51 +1,50 @@
-# Freedom Loader — Theme Workshop
+# Freedom Loader Theme Workshop
 
-> Interactive theme creator for [Freedom Loader](https://github.com/MasterAcnolo/Freedom-Loader)
+Theme editor for Freedom Loader - part of the [Freedom Loader](https://github.com/MasterAcnolo/Freedom-Loader) project.
 
-## What it does
+Visit the main website: https://masteracnolo.github.io/FreedomLoader/
 
-- Live preview of Freedom Loader UI as you edit
-- Color pickers for every CSS variable
-- Background image upload (JPG, PNG, WebP, GIF, AVIF — max 10 MB)
-- Background size / position / attachment controls
-- Meta fields (name, author, subtitle, version)
-- Export as `.zip` containing your `.theme.json` + image
+## What is this?
 
-## Usage
+The Theme Workshop is a visual editor for creating custom themes for Freedom Loader. No coding required.
 
-Open `index.html` in a browser — no build step, no server needed.
+- Browse existing community themes: index.html
+- Create your own theme: create.html
 
-Or visit the GitHub Pages deployment.
+## Creating a Theme
 
-## Installing your theme
+1. Open create.html in your browser
+2. Customize colors using the color picker
+3. Adjust fonts, sizing, and layout in the settings panel
+4. Preview changes in real-time
+5. Click "Export .zip" to download
 
-1. Export your `.zip` from the Workshop
-2. Drop it in the `theme/` folder of your Freedom Loader installation
-3. Restart the app — your theme appears in the settings panel
+The exported ZIP contains:
+- theme.json (your theme configuration)
+- preview.png (theme preview)
 
-## Project structure
+## Installing a Theme
 
-```
-Freedom-Loader-Workshop/
-├── index.html
-├── styles/
-│   ├── styles.css
-│   ├── variables.css
-│   ├── layout/
-│   │   ├── topbar.css
-│   │   ├── workspace.css
-│   │   └── panel.css
-│   └── components/
-│       ├── inputs.css
-│       └── preview.css
-└── scripts/
-    ├── app.js        — entry point
-    ├── theme.js      — theme state
-    ├── preview.js    — applies theme to preview
-    ├── editor.js     — builds editor UI
-    └── export.js     — generates ZIP
-```
+Extract your theme ZIP and place the folder in:
+`%AppData%\FreedomLoader\Themes\`
 
-## Theme format
+Restart Freedom Loader and select your theme from Settings > Appearance.
+
+## Submitting Your Theme
+
+To share your theme with the community:
+
+1. Export your theme as ZIP
+2. Create a GitHub issue on the main project: https://github.com/MasterAcnolo/Freedom-Loader/issues
+3. Attach your theme ZIP and preview image
+
+## Project Links
+
+- Main Project: https://github.com/MasterAcnolo/Freedom-Loader
+- Main Website: https://masteracnolo.github.io/FreedomLoader/
+- Theme Browse: index.html
+- Theme Creator: create.html
+
+## Template
 
 See [template.theme.json](https://github.com/MasterAcnolo/Freedom-Loader/blob/main/theme/template.theme.json) for the full spec.
