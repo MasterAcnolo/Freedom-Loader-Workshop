@@ -60,7 +60,6 @@
   padding: 12px 16px;
   background: var(--bg-secondary);
   cursor: pointer;
-  user-select: none;
   transition: background 0.1s ease;
 }
 

@@ -19,22 +19,22 @@ function setupThemeToggle() {
   }
   
   // Apply theme
-  if (currentTheme === 'dark') {
-    html.setAttribute('data-theme', 'dark');
+  if (currentTheme === 'light') {
+    html.classList.add('light-theme');
   } else {
-    html.removeAttribute('data-theme');
+    html.classList.remove('light-theme');
   }
   updateThemeIcon(currentTheme);
 
   // Toggle theme on click
   themeToggle.addEventListener('click', () => {
-    const theme = html.getAttribute('data-theme');
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    const isLightTheme = html.classList.contains('light-theme');
+    const newTheme = isLightTheme ? 'dark' : 'light';
     
-    if (newTheme === 'dark') {
-      html.setAttribute('data-theme', 'dark');
+    if (newTheme === 'light') {
+      html.classList.add('light-theme');
     } else {
-      html.removeAttribute('data-theme');
+      html.classList.remove('light-theme');
     }
     
     localStorage.setItem('theme', newTheme);

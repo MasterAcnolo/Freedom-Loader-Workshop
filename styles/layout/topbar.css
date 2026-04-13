@@ -92,6 +92,7 @@
 .btn-ghost {
   color: var(--text-secondary);
   background: transparent;
+  text-decoration: none;
 }
 .btn-ghost:hover {
   background: var(--bg-secondary);
@@ -110,6 +111,19 @@
 }
 .btn-primary:active { transform: translateY(0); }
 
+.btn-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  font-weight: 500;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background: var(--bg-secondary);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
 .btn-icon {
   width: 36px;
   height: 36px;
@@ -119,6 +133,9 @@
   justify-content: center;
   border-radius: var(--radius-md);
   color: var(--text-secondary);
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 .btn-icon:hover {
   background: var(--bg-secondary);
