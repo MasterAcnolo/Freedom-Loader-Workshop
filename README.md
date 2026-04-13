@@ -44,8 +44,8 @@ To share your theme with the community:
 
 - Main Project: https://github.com/MasterAcnolo/Freedom-Loader
 - Main Website: https://masteracnolo.github.io/FreedomLoader/
-- Theme Browse: index.html
-- Theme Creator: create.html
+- [Theme Browse](https://masteracnolo.github.io/Freedom-Loader-Workshop/)
+- [Theme Creator](https://masteracnolo.github.io/Freedom-Loader-Workshop/create.html)
 
 ## Template
 
