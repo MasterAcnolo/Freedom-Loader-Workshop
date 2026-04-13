@@ -11,7 +11,7 @@ The Theme Workshop is a visual editor for creating custom themes for Freedom Loa
 - Browse existing community themes: index.html
 - Create your own theme: create.html
 
-![Preview](image.png)
+<img src="preview.png">
 
 ## Creating a Theme
 
