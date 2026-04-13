@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://masteracnolo.github.io/Freedom-Loader-Workshop/sitemap.xml

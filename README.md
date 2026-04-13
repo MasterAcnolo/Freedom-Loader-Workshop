@@ -2,7 +2,7 @@
 
 Theme editor for Freedom Loader - part of the [Freedom Loader](https://github.com/MasterAcnolo/Freedom-Loader) project.
 
-Visit the main website: https://masteracnolo.github.io/FreedomLoader/
+Visit the main website: https://masteracnolo.github.io/Freedom-Loader-Site
 
 ## What is this?
 
@@ -43,7 +43,7 @@ To share your theme with the community:
 ## Project Links
 
 - Main Project: https://github.com/MasterAcnolo/Freedom-Loader
-- Main Website: https://masteracnolo.github.io/FreedomLoader/
+- Main Website: https://masteracnolo.github.io/Freedom-Loader-Site
 - [Theme Browse](https://masteracnolo.github.io/Freedom-Loader-Workshop/)
 - [Theme Creator](https://masteracnolo.github.io/Freedom-Loader-Workshop/create.html)
 
