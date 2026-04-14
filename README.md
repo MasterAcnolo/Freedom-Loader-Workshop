@@ -28,7 +28,7 @@ The exported ZIP contains:
 ## Installing a Theme
 
 Extract your theme ZIP and place the folder in:
-`%AppData%\FreedomLoader\Themes\`
+`%APPDATA%\Freedom Loader\themes`
 
 Restart Freedom Loader and select your theme from Settings > Appearance.
 
