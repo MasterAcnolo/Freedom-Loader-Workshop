@@ -29,6 +29,16 @@
     "file": "./themes/Neon.zip",
     "description": "Vibrant neon colors with high contrast for a modern cyberpunk aesthetic"
   },
+    {
+    "id": "meteora",
+    "name": "Meteora",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-04-15",
+    "dateModified": "2025-04-15",
+    "preview": "./themes/preview/meteora.png",
+    "file": "./themes/meteora.zip",
+    "description": "Linkin Park Meteora style"
+  },
   {
     "id": "drift",
     "name": "Drift",
