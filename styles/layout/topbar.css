@@ -23,6 +23,12 @@
   width: 28px;
   height: 28px;
   flex-shrink: 0;
+  transition: filter 0.3s ease;
+  filter: invert(0);
+}
+
+:root.light-theme .topbar-brand svg {
+  filter: invert(1);
 }
 
 .topbar-title {
