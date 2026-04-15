@@ -1,5 +1,5 @@
 import { applyThemeToPreview, initPreviewZoom } from './preview.js';
-import { initEditor } from './editor.js';
+import { initEditor, resetChangesFlag } from './editor.js';
 import { downloadThemeZip } from './export.js';
 
 function initThemeToggle() {
@@ -30,6 +30,7 @@ function initResetBtn() {
       resetTheme();
       initEditor();
       applyThemeToPreview();
+      resetChangesFlag();
     });
   });
 }

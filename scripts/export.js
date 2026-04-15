@@ -1,4 +1,5 @@
 import { exportThemeJson, getBackgroundImageFile } from './theme.js';
+import { resetChangesFlag } from './editor.js';
 
 async function downloadThemeZip() {
   const theme = exportThemeJson();
@@ -34,6 +35,8 @@ async function downloadThemeZip() {
   a.download = `${themeName}.zip`;
   a.click();
   URL.revokeObjectURL(url);
+
+  resetChangesFlag();
 }
 
 export { downloadThemeZip };

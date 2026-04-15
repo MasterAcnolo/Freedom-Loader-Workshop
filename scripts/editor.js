@@ -1,9 +1,24 @@
 import { setThemeValue, getThemeValue, setBackgroundImage, removeBackgroundImage, getTheme, resetTheme } from './theme.js';
 import { applyThemeToPreview } from './preview.js';
 
+// Store pickr instances for bidirectional sync
+const pickrInstances = new Map();
+
+// Track if theme has unsaved changes
+let hasChanges = false;
+
+function markAsChanged() {
+  hasChanges = true;
+}
+
+function resetChangesFlag() {
+  hasChanges = false;
+}
+
 function update(path, value) {
   setThemeValue(path, value);
   applyThemeToPreview();
+  markAsChanged();
 }
 
 function colorField(label, path, subLabel) {
@@ -79,8 +94,8 @@ function buildMetaPanel() {
         ])}
         ${selectField("Position", "style.background.position", [
           {value:"center",label:"Center"},{value:"top",label:"Top"},
-          {value:"bottom",label:"Bottom"},{value:"left center",label:"Left"},
-          {value:"right center",label:"Right"},{value:"70% center",label:"70% X"}
+          {value:"bottom",label:"Bottom"},{value:"left",label:"Left"},
+          {value:"right",label:"Right"},
         ])}
         ${selectField("Attachment", "style.background.attachment", [
           {value:"fixed",label:"Fixed"},{value:"scroll",label:"Scroll"},{value:"local",label:"Local"}
@@ -172,6 +187,7 @@ function initPickrs(container) {
   container.querySelectorAll(".pickr-trigger[data-path]").forEach(trigger => {
     const path = trigger.dataset.path;
     const val = trigger.dataset.value || "#000000";
+    const pickrId = `cf-${path.replace(/\./g, "-")}-hex`;
 
     const pickr = Pickr.create({
       el: trigger,
@@ -190,31 +206,35 @@ function initPickrs(container) {
       }
     });
 
-    pickr.on("save", (color) => {
+    // Store pickr instance for bidirectional sync
+    pickrInstances.set(pickrId, pickr);
+
+    const updateColorValue = (color) => {
       if (!color) return;
       const hexa = color.toHEXA().toString();
       const rgba = color.toRGBA().toString(0);
       const hasAlpha = color.toRGBA()[3] < 1;
       const finalVal = hasAlpha ? rgba : hexa;
 
-      const hexInput = document.getElementById(`cf-${path.replace(/\./g, "-")}-hex`);
+      const hexInput = document.getElementById(pickrId);
       if (hexInput) hexInput.value = finalVal;
 
       update(path, finalVal);
+    };
+
+    pickr.on("save", (color) => {
+      updateColorValue(color);
       pickr.hide();
     });
 
     pickr.on("change", (color) => {
-      if (!color) return;
-      const hexa = color.toHEXA().toString();
-      const rgba = color.toRGBA().toString(0);
-      const hasAlpha = color.toRGBA()[3] < 1;
-      const finalVal = hasAlpha ? rgba : hexa;
+      updateColorValue(color);
+    });
 
-      const hexInput = document.getElementById(`cf-${path.replace(/\./g, "-")}-hex`);
-      if (hexInput) hexInput.value = finalVal;
-
-      update(path, finalVal);
+    pickr.on("hide", () => {
+      // Sauvegarde automatiquement quand on ferme le picker
+      const color = pickr.getColor();
+      updateColorValue(color);
     });
   });
 }
@@ -227,6 +247,16 @@ function wireInputs(container) {
           const val = el.value.trim();
           if (/^#[0-9a-fA-F]{3,8}$/.test(val) || /^rgba?\(/.test(val)) {
             update(path, val);
+            // Sync color picker when hex input changes
+            const pickrId = el.id;
+            const pickr = pickrInstances.get(pickrId);
+            if (pickr) {
+              try {
+                pickr.setColor(val);
+              } catch (e) {
+                // Ignore invalid color format for pickr
+              }
+            }
           }
         });
       } else if (el.type !== "file") {
@@ -256,6 +286,7 @@ function wireImageUpload() {
       removeBtn.classList.add("visible");
       zone.classList.add("has-image");
       applyThemeToPreview();
+      markAsChanged();
     };
     reader.readAsDataURL(file);
   });
@@ -269,6 +300,7 @@ function wireImageUpload() {
     zone.classList.remove("has-image");
     input.value = "";
     applyThemeToPreview();
+    markAsChanged();
   });
 }
 
@@ -306,6 +338,26 @@ function initEditor() {
   wireImageUpload();
   wireSections();
   wireTabs();
+
+  // Add confirmation for unsaved changes
+  window.addEventListener("beforeunload", (e) => {
+    if (hasChanges) {
+      e.preventDefault();
+      e.returnValue = "";
+      return "";
+    }
+  });
+
+  // Also add confirmation for navigation links
+  document.querySelectorAll("a[href]:not([target])").forEach(link => {
+    link.addEventListener("click", (e) => {
+      if (hasChanges && !link.classList.contains("topbar-brand")) {
+        if (!confirm("You have unsaved changes. Do you really want to leave?")) {
+          e.preventDefault();
+        }
+      }
+    });
+  });
 }
 
-export { initEditor };
+export { initEditor, resetChangesFlag };
