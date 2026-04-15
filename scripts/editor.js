@@ -4,9 +4,21 @@ import { applyThemeToPreview } from './preview.js';
 // Store pickr instances for bidirectional sync
 const pickrInstances = new Map();
 
+// Track if theme has unsaved changes
+let hasChanges = false;
+
+function markAsChanged() {
+  hasChanges = true;
+}
+
+function resetChangesFlag() {
+  hasChanges = false;
+}
+
 function update(path, value) {
   setThemeValue(path, value);
   applyThemeToPreview();
+  markAsChanged();
 }
 
 function colorField(label, path, subLabel) {
@@ -274,6 +286,7 @@ function wireImageUpload() {
       removeBtn.classList.add("visible");
       zone.classList.add("has-image");
       applyThemeToPreview();
+      markAsChanged();
     };
     reader.readAsDataURL(file);
   });
@@ -287,6 +300,7 @@ function wireImageUpload() {
     zone.classList.remove("has-image");
     input.value = "";
     applyThemeToPreview();
+    markAsChanged();
   });
 }
 
@@ -324,6 +338,26 @@ function initEditor() {
   wireImageUpload();
   wireSections();
   wireTabs();
+
+  // Add confirmation for unsaved changes
+  window.addEventListener("beforeunload", (e) => {
+    if (hasChanges) {
+      e.preventDefault();
+      e.returnValue = "";
+      return "";
+    }
+  });
+
+  // Also add confirmation for navigation links
+  document.querySelectorAll("a[href]:not([target])").forEach(link => {
+    link.addEventListener("click", (e) => {
+      if (hasChanges && !link.classList.contains("topbar-brand")) {
+        if (!confirm("You have unsaved changes. Do you really want to leave?")) {
+          e.preventDefault();
+        }
+      }
+    });
+  });
 }
 
-export { initEditor };
+export { initEditor, resetChangesFlag };
