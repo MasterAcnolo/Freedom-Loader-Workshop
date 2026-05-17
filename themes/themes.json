@@ -20,21 +20,21 @@
     "description": "A bright and clean light theme perfect for daytime development"
   },
   {
-    "id": "neon",
-    "name": "Neon",
+    "id": "hope",
+    "name": "Hope",
     "creator": "MasterAcnolo",
-    "dateCreated": "2025-11-09",
+    "dateCreated": "2026-04-23",
     "dateModified": "2026-04-12",
-    "preview": "./themes/preview/neon.png",
-    "file": "./themes/Neon.zip",
-    "description": "Vibrant neon colors with high contrast for a modern cyberpunk aesthetic"
+    "preview": "./themes/preview/hope.png",
+    "file": "./themes/Hope.zip",
+    "description": "NF Hope Album themed"
   },
-    {
+  {
     "id": "meteora",
     "name": "Meteora",
     "creator": "MasterAcnolo",
-    "dateCreated": "2025-04-15",
-    "dateModified": "2025-04-15",
+    "dateCreated": "2026-04-15",
+    "dateModified": "2026-04-15",
     "preview": "./themes/preview/meteora.png",
     "file": "./themes/meteora.zip",
     "description": "Linkin Park Meteora style"
@@ -88,6 +88,16 @@
     "preview": "./themes/preview/nf.png",
     "file": "./themes/NF.zip",
     "description": "Minimalist theme with sharp edges and professional aesthetics"
+  },
+  {
+    "id": "neon",
+    "name": "Neon",
+    "creator": "MasterAcnolo",
+    "dateCreated": "2025-11-09",
+    "dateModified": "2026-04-12",
+    "preview": "./themes/preview/neon.png",
+    "file": "./themes/Neon.zip",
+    "description": "Vibrant neon colors with high contrast for a modern cyberpunk aesthetic"
   },
   {
     "id": "chirac",
